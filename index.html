@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f8f4ed">
+  <meta name="description" content="A cosy little home for your stories, chapters and everyday thoughts.">
+  <title>Baby Tomato's Diary</title>
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExNiIgZmlsbD0iIzYyNmY2MCIvPgogIDxjaXJjbGUgY3g9IjI1NiIgY3k9IjI4MCIgcj0iMTUxIiBmaWxsPSIjZTc2ZTZlIi8+CiAgPHBhdGggZD0iTTI1NCAxMzljLTIyLTQ5LTgxLTUzLTExMS0zMCAzNCAxIDUwIDIyIDU3IDQ3LTI3LTE3LTYyLTctNzcgMTUgMzktNSA2NCAxMiA3NiAzNyAxOS0yMiAzNi0zNyA1NS00MnoiIGZpbGw9IiNkN2UwYmQiLz4KICA8cGF0aCBkPSJNMjU5IDEzOWMyMS00OSA4MC01MyAxMTAtMzAtMzQgMS01MCAyMi01NyA0NyAyNy0xNyA2Mi03IDc3IDE1LTM5LTUtNjQgMTItNzYgMzctMTktMjItMzYtMzctNTQtNDJ6IiBmaWxsPSIjZDdlMGJkIi8+CiAgPHBhdGggZD0iTTI1NyAxMjBjLTgtMzQgMTEtNjYgMzQtNzktNiAzNC00IDU0IDQgNzEiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q3ZTBiZCIgc3Ryb2tlLXdpZHRoPSIxOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTE3MiAyMzZjLTE4IDQ2LTEyIDExMyAzMSAxNTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Y1YTBhMCIgc3Ryb2tlLXdpZHRoPSIxNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNiIvPgogIDxjaXJjbGUgY3g9IjIxMSIgY3k9IjI3NCIgcj0iMTAiIGZpbGw9IiNmZmQ5YzkiIG9wYWNpdHk9Ii44Ii8+PGNpcmNsZSBjeD0iMzA5IiBjeT0iMzM3IiByPSI4IiBmaWxsPSIjZmZkOWM5IiBvcGFjaXR5PSIuOCIvPgo8L3N2Zz4K" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --ink: #37372f;
+  --muted: #96958d;
+  --paper: #fbf9f4;
+  --paper-deep: #f4f0e8;
+  --line: #eae5db;
+  --rose: #e9b9bd;
+  --rose-deep: #b96f7a;
+  --green: #657563;
+  --shadow: 0 12px 35px rgba(72, 62, 48, .07);
+  font-family: 'Nunito', sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: var(--paper); }
+body { min-height: 100vh; }
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid rgba(185,111,122,.25); outline-offset: 2px; }
+.app-shell { min-height: 100vh; display: grid; grid-template-columns: 76px 305px minmax(0, 1fr); }
+.rail { background: #626f60; color: #fff; display: flex; flex-direction: column; align-items: center; padding: 22px 0 18px; gap: 13px; min-height: 100vh; }
+.brand-mark { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 15px; background: rgba(255,255,255,.14); text-decoration: none; }
+.tomato { font-size: 25px; filter: drop-shadow(0 2px 1px rgba(0,0,0,.1)); }
+.rail-rule { width: 27px; height: 1px; background: rgba(255,255,255,.22); margin: 8px 0 2px; }
+.rail-button { width: 43px; height: 43px; border: 0; border-radius: 14px; color: rgba(255,255,255,.78); background: transparent; font-size: 24px; display: grid; place-items: center; transition: .18s ease; }
+.rail-button:hover, .rail-button.active { color: #fff; background: rgba(255,255,255,.16); }
+.rail-button span { line-height: 1; }
+.rail-spacer { flex: 1; }
+.rail-avatar { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.6); border-radius: 50%; display: grid; place-items: center; font-family: Handlee, cursive; font-size: 18px; background: #899584; }
+.projects-pane { min-height: 100vh; height: 100vh; position: sticky; top: 0; display: flex; flex-direction: column; padding: 35px 23px 18px; border-right: 1px solid var(--line); background: #f8f5ee; overflow: hidden; }
+.pane-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; }
+.eyebrow { font-size: 9px; font-weight: 800; letter-spacing: 2px; color: #a4a094; margin: 0 0 8px; }
+h1, h2, h3, p { margin-top: 0; }
+.pane-heading h1 { font-family: Handlee, cursive; font-weight: 400; font-size: 28px; margin: 0; letter-spacing: -.5px; }
+.heading-heart { color: #cb8c93; font-size: 19px; }
+.search-box { height: 42px; padding: 0 11px; border: 1px solid #e9e4da; border-radius: 12px; background: #fffefa; display: flex; align-items: center; gap: 8px; color: #a6a297; }
+.search-icon { font-size: 25px; line-height: 1; transform: rotate(-15deg); }
+.search-box input { border: 0; outline: 0; background: transparent; min-width: 0; flex: 1; color: var(--ink); font-size: 11px; }
+.search-box input::placeholder { color: #b0ada3; }
+.search-box kbd { background: #f1eee8; color: #aaa69b; border-radius: 5px; font-size: 10px; padding: 2px 5px; }
+.list-caption { display: flex; justify-content: space-between; align-items: center; margin: 25px 0 11px; color: #aaa69c; font-size: 9px; font-weight: 800; letter-spacing: 1.3px; }
+.text-button { padding: 0; border: 0; background: none; color: #9a978d; font-size: 10px; letter-spacing: 0; font-weight: 600; }
+.project-list { flex: 1; overflow-y: auto; margin: 0 -8px; padding: 0 8px 12px; scrollbar-width: thin; }
+.project-card { display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 13px; cursor: pointer; border: 1px solid transparent; margin-bottom: 5px; transition: .18s ease; }
+.project-card:hover { background: rgba(255,255,255,.65); }
+.project-card.selected { background: #fffefa; border-color: #e9e2d8; box-shadow: 0 3px 12px rgba(80,68,52,.035); }
+.cover-mini { width: 42px; height: 48px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 7px 9px 9px 7px; font-size: 18px; box-shadow: inset 3px 0 rgba(255,255,255,.35), 2px 3px 5px rgba(58,47,38,.08); position: relative; overflow: hidden; }
+.cover-mini::after { content: ''; position: absolute; inset: 5px 5px 5px 8px; border: 1px solid rgba(255,255,255,.45); border-radius: 3px; }
+.cover-rose { background: linear-gradient(145deg,#f1c9c7,#d99ca4); }
+.cover-lavender { background: linear-gradient(145deg,#d9cce9,#b8a7d2); }
+.cover-sage { background: linear-gradient(145deg,#c8d2b9,#94a58e); }
+.cover-butter { background: linear-gradient(145deg,#f0dfab,#d8bf7d); }
+.cover-sky { background: linear-gradient(145deg,#c6dce2,#8fb7c4); }
+.cover-berry { background: linear-gradient(145deg,#d9b5c6,#ad819e); }
+.project-card-copy { min-width: 0; flex: 1; }
+.project-card-title { font-family: Handlee, cursive; font-size: 17px; line-height: 1.2; margin: 0 0 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.project-card-meta { color: #a6a197; font-size: 10px; margin: 0; }
+.project-card-star { color: #c58a91; font-size: 15px; }
+.new-project-button { width: 100%; border: 1px dashed #d9cfc1; background: rgba(255,255,255,.42); color: #77766a; border-radius: 12px; padding: 12px; font-weight: 800; font-size: 11px; margin-top: 10px; }
+.new-project-button:hover { background: white; border-color: #cfa4a4; color: #a96873; }
+.new-project-button span { font-size: 17px; margin-right: 5px; vertical-align: -1px; }
+.pane-footnote { color: #aaa69b; font-size: 9px; text-align: center; margin-top: 18px; }
+.tiny-leaf { color: #9aa58d; margin-right: 4px; }
+.workspace { min-width: 0; min-height: 100vh; background: var(--paper); }
+.welcome-screen { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 45px 25px; text-align: center; }
+.welcome-art { width: 230px; height: 185px; position: relative; margin-bottom: 25px; }
+.sun-shape { position: absolute; width: 145px; height: 145px; border-radius: 50%; background: #f2e5c9; top: 5px; left: 45px; }
+.book-shape { position: absolute; width: 116px; height: 130px; background: #d7aaa9; border-radius: 9px 15px 15px 9px; left: 58px; top: 39px; transform: rotate(-8deg); box-shadow: inset 7px 0 rgba(255,255,255,.24), 10px 12px 20px rgba(90,67,48,.12); display: grid; place-items: center; border: 1px solid rgba(255,255,255,.7); }
+.book-shape::before { content: ''; position: absolute; inset: 10px; border: 1px solid rgba(255,255,255,.55); border-radius: 5px; }
+.book-shape span { font-size: 35px; color: #fff4e9; }
+.spark { position: absolute; color: #b8a27d; font-size: 25px; }
+.spark-one { left: 26px; top: 38px; }.spark-two { right: 23px; bottom: 30px; font-size: 19px; }
+.welcome-screen h2 { font-family: Handlee, cursive; font-size: clamp(35px,4vw,51px); line-height: 1.12; font-weight: 400; margin: 0 0 15px; color: #46463d; }
+.welcome-copy { max-width: 360px; color: #98958a; font-size: 13px; line-height: 1.8; margin-bottom: 24px; }
+.primary-button { border: 0; border-radius: 12px; background: #657563; color: white; padding: 12px 19px; font-size: 11px; font-weight: 800; box-shadow: 0 5px 13px rgba(89,108,85,.17); transition: .18s ease; }
+.primary-button:hover { background: #536451; transform: translateY(-1px); }
+.welcome-note { margin: 25px 0 0; font-size: 10px; color: #b1ada2; }.welcome-note span { color: #cb8e94; }
+.project-workspace { height: 100vh; min-height: 600px; display: grid; grid-template-columns: 260px minmax(0,1fr); overflow: hidden; }
+.project-workspace.hidden, .hidden { display: none !important; }
+.chapter-pane { background: #fbf9f4; border-right: 1px solid var(--line); padding: 27px 17px 18px; display: flex; flex-direction: column; min-height: 0; }
+.project-topline { display: flex; align-items: center; gap: 8px; margin-bottom: 17px; }
+.back-link { border: 0; background: none; color: #99958a; font-size: 11px; padding: 4px 0; }
+.project-topline .crumb-dot { color: #d1c7b9; }
+.project-cover-large { height: 112px; border-radius: 13px; position: relative; overflow: hidden; display: flex; align-items: end; padding: 15px; margin-bottom: 18px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.35); }
+.project-cover-large::before, .project-cover-large::after { content: ''; position: absolute; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; width: 140px; height: 140px; right: -22px; top: -65px; }
+.project-cover-large::after { width: 90px; height: 90px; right: 23px; top: 19px; }
+.project-cover-large h2 { position: relative; z-index: 1; font-family: Handlee, cursive; font-size: 25px; font-weight: 400; color: rgba(69,57,53,.86); margin: 0; max-width: 90%; overflow-wrap: anywhere; }
+.project-description { font-size: 11px; color: #9a978d; line-height: 1.6; margin: 0 2px 19px; }
+.chapter-heading { display: flex; justify-content: space-between; align-items: center; margin: 6px 2px 10px; }
+.chapter-heading h3 { font-size: 10px; letter-spacing: 1.3px; color: #aaa69c; margin: 0; }
+.small-plus { border: 0; background: #eee9df; color: #737467; width: 25px; height: 25px; border-radius: 8px; font-size: 17px; line-height: 1; }
+.chapter-list { overflow-y: auto; flex: 1; }
+.chapter-item { display: flex; align-items: center; gap: 9px; border-radius: 10px; padding: 10px 9px; margin-bottom: 4px; cursor: pointer; color: #747268; border: 1px solid transparent; }
+.chapter-item:hover { background: #f4f0e8; }
+.chapter-item.active { background: white; border-color: #ece6dc; color: #49493f; }
+.chapter-number { width: 25px; height: 25px; display: grid; place-items: center; border-radius: 8px; background: #f0ece4; color: #999486; font-size: 10px; flex: 0 0 auto; }
+.chapter-item.active .chapter-number { background: #ead3d1; color: #956b6c; }
+.chapter-item-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: Handlee, cursive; font-size: 16px; flex: 1; }
+.chapter-item-count { font-size: 9px; color: #b4b0a5; }
+.chapter-empty { text-align: center; padding: 32px 12px; color: #aaa69d; font-size: 11px; line-height: 1.7; }
+.chapter-pane-foot { color: #b4b0a5; font-size: 9px; border-top: 1px solid var(--line); padding-top: 13px; margin-top: 10px; }
+.writing-pane { min-width: 0; background: #fffefa; display: flex; flex-direction: column; min-height: 0; }
+.editor-toolbar { min-height: 66px; border-bottom: 1px solid #eee9e0; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 26px; }
+.editor-breadcrumb { color: #aaa69c; font-size: 10px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.editor-breadcrumb span { color: #c6bcb0; padding: 0 6px; }
+.toolbar-actions { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
+.icon-button { border: 0; width: 34px; height: 34px; border-radius: 10px; background: #f5f1e9; color: #8c897f; font-size: 18px; display: grid; place-items: center; }
+.icon-button:hover { background: #eee8de; }
+.icon-button.is-favourite { color: #c47f89; background: #f8eeee; }
+.more-menu { position: relative; }
+.menu-popover { display: none; position: absolute; top: 39px; right: 0; min-width: 150px; padding: 5px; border: 1px solid var(--line); border-radius: 11px; background: white; box-shadow: var(--shadow); z-index: 5; }
+.menu-popover.open { display: block; }
+.menu-popover button { display: block; width: 100%; border: 0; text-align: left; background: transparent; border-radius: 7px; padding: 9px; color: #69675e; font-size: 11px; }
+.menu-popover button:hover { background: #f7f3ec; }
+.editor-paper { width: min(790px, 100%); margin: 0 auto; padding: 55px clamp(24px,6vw,84px) 40px; flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.chapter-kicker { color: #c1a39e; font-size: 9px; letter-spacing: 2px; font-weight: 800; margin-bottom: 12px; }
+.chapter-title-input { border: 0; outline: 0; background: transparent; width: 100%; color: #47473f; font-family: Handlee, cursive; font-size: clamp(30px,3.2vw,41px); line-height: 1.15; padding: 0; margin-bottom: 17px; }
+.chapter-title-input::placeholder { color: #c8c3b9; }
+.editor-divider { width: 39px; height: 2px; border-radius: 4px; background: #e4c5c1; margin-bottom: 22px; }
+.chapter-body { border: 0; outline: 0; resize: none; flex: 1; min-height: 260px; background-color: transparent; color: #656359; font-family: Handlee, cursive; font-size: 18px; line-height: 1.95; letter-spacing: .1px; padding: 0; background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 36px, rgba(218,211,199,.35) 37px); background-position: 0 7px; background-size: 100% 37px; }
+.chapter-body::placeholder { color: #c2beb4; }
+.editor-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f0ece5; padding-top: 13px; color: #b2aea4; font-size: 9px; margin-top: 15px; }
+.save-status { display: flex; align-items: center; gap: 6px; }.save-dot { width: 6px; height: 6px; background: #9aaa91; border-radius: 50%; }
+.mobile-back { display: none; }
+.modal { border: 0; padding: 0; background: transparent; max-width: calc(100vw - 30px); width: 420px; }
+.modal::backdrop { background: rgba(42,43,36,.37); backdrop-filter: blur(3px); }
+.modal-card { position: relative; display: flex; flex-direction: column; padding: 31px; background: #fffdf8; border-radius: 19px; box-shadow: 0 22px 65px rgba(37,33,26,.2); }
+.modal-card h2 { font-family: Handlee, cursive; font-size: 31px; font-weight: 400; margin: 0 0 22px; }
+.modal-close { position: absolute; right: 15px; top: 12px; background: transparent; border: 0; font-size: 25px; color: #aaa398; }
+.field-label { color: #777469; font-size: 10px; font-weight: 800; margin: 0 0 7px; }.field-label span { color: #aaa69b; font-weight: 500; }
+.modal-input { border: 1px solid #e8e2d8; border-radius: 10px; padding: 12px; background: #fffefa; color: var(--ink); font-size: 12px; margin-bottom: 16px; outline: 0; width: 100%; }
+.modal-input:focus { border-color: #c99b9d; }
+.modal-textarea { min-height: 70px; resize: vertical; }
+.cover-choices { display: flex; gap: 10px; margin: 4px 0 24px; }
+.cover-choice { width: 30px; height: 30px; border-radius: 50%; border: 3px solid #fffdf8; box-shadow: 0 0 0 1px #e5dfd5; }
+.cover-choice.selected { box-shadow: 0 0 0 2px #797d6b; }
+.cover-choice[data-cover="rose"] { background: #dfaeb1; }.cover-choice[data-cover="lavender"] { background: #bdaed5; }.cover-choice[data-cover="sage"] { background: #a9b79d; }.cover-choice[data-cover="butter"] { background: #e6d18e; }.cover-choice[data-cover="sky"] { background: #a8cbd4; }.cover-choice[data-cover="berry"] { background: #c59ab2; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 9px; margin-top: 4px; }
+.secondary-button, .danger-button { border: 1px solid #e6e0d6; border-radius: 10px; background: transparent; color: #858176; font-size: 10px; font-weight: 800; padding: 11px 16px; }
+.danger-button { background: #a85e66; color: white; border-color: #a85e66; }
+.compact-modal { padding-top: 35px; }.confirm-copy { color: #938f84; font-size: 12px; line-height: 1.6; margin-top: -9px; margin-bottom: 20px; }
+.toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 15px); opacity: 0; pointer-events: none; background: #4f5c4e; color: white; border-radius: 99px; padding: 10px 17px; font-size: 11px; box-shadow: var(--shadow); transition: .22s ease; z-index: 20; }
+.toast.show { opacity: 1; transform: translate(-50%,0); }
+.mobile-only { display: none; }
+.empty-projects { padding: 28px 12px; text-align: center; color: #a5a094; font-size: 11px; line-height: 1.6; }.empty-projects strong { display: block; color: #777469; font-family: Handlee, cursive; font-size: 19px; font-weight: 400; margin-bottom: 5px; }
+.project-actions { display:flex; gap:7px; margin-top:auto; padding-top:12px; border-top:1px solid var(--line); }
+.project-actions button { flex:1; border:1px solid #e8e2d8; background:transparent; color:#8a867b; border-radius:9px; padding:9px 5px; font-size:9px; font-weight:800; }
+.project-actions button:hover { background:white; }
+@media (max-width: 950px) {
+  .app-shell { grid-template-columns: 62px 275px minmax(0,1fr); }
+  .projects-pane { padding-left:17px; padding-right:17px; }
+  .project-workspace { grid-template-columns: 225px minmax(0,1fr); }
+  .editor-toolbar { padding-left:18px; padding-right:18px; }
+}
+@media (max-width: 720px) {
+  .app-shell { display: flex; flex-direction: column; min-height: 100dvh; }
+  .rail { min-height: auto; height: 57px; padding: 7px 13px; flex-direction: row; justify-content: space-between; gap: 7px; position: sticky; top: 0; z-index: 9; }
+  .brand-mark { width: 39px; height: 39px; border-radius: 12px; }
+  .rail-rule { display:none; }
+  .rail-button { width: 37px; height: 37px; font-size: 21px; }
+  .rail-spacer { flex:1; }
+  .rail-avatar { width: 30px; height: 30px; }
+  .projects-pane { height: calc(100dvh - 57px); min-height: 400px; position: static; border-right: 0; padding: 25px 19px 15px; }
+  .pane-heading { margin-bottom: 17px; }
+  .mobile-only { display:grid; }
+  .new-project-button { margin-top: 5px; }
+  .workspace { min-height: calc(100dvh - 57px); }
+  .welcome-screen { min-height: calc(100dvh - 57px); padding: 25px 20px; }
+  .welcome-art { transform: scale(.86); margin-top: -5px; margin-bottom: 5px; }
+  .project-workspace { height: calc(100dvh - 57px); min-height: 420px; display: block; overflow: auto; }
+  .chapter-pane { border-right:0; padding: 18px 18px 15px; min-height: 100%; }
+  .project-cover-large { height: 95px; }
+  .chapter-pane-foot { display:none; }
+  .writing-pane { min-height: calc(100dvh - 57px); }
+  .editor-toolbar { min-height: 56px; padding: 9px 14px; }
+  .mobile-back { display:inline-flex; align-items:center; gap:5px; border:0; background:transparent; padding:5px 0; color:#8e8a80; font-size:10px; }
+  .editor-breadcrumb { display:none; }
+  .editor-paper { padding: 33px 23px 23px; }
+  .chapter-title-input { font-size: 34px; }
+  .chapter-body { font-size: 17px; }
+  .project-workspace.mobile-chapters .writing-pane { display:none; }
+  .project-workspace.mobile-editor .chapter-pane { display:none; }
+  .project-workspace.mobile-editor .writing-pane { display:flex; }
+  .project-workspace.mobile-chapters { display:block; }
+  .project-workspace.mobile-editor { display:block; }
+  .app-shell.has-project .projects-pane { display:none; }
+  .app-shell:not(.has-project) .workspace { display:none; }
+  .app-shell:not(.has-project) .projects-pane { display:flex; }
+}
+@media (max-width: 380px) {
+  .projects-pane { padding-left:14px; padding-right:14px; }
+  .editor-paper { padding-left:18px; padding-right:18px; }
+  .toolbar-actions { gap:5px; }
+}
+
+</style>
+</head>
+<body>
+  <div class="app-shell" id="appShell">
+    <aside class="rail" aria-label="Main navigation">
+      <a class="brand-mark" href="#home" aria-label="Baby Tomato's Diary home">
+        <span class="tomato">🍅</span>
+      </a>
+      <div class="rail-rule"></div>
+      <button class="rail-button active" data-filter="all" title="All projects" aria-label="All projects"><span>▤</span></button>
+      <button class="rail-button" data-filter="favorites" title="Favourites" aria-label="Favourites"><span>♡</span></button>
+      <div class="rail-spacer"></div>
+      <button class="rail-button" id="exportButton" title="Export a backup" aria-label="Export a backup"><span>⇩</span></button>
+      <button class="rail-button" id="importButton" title="Import a backup" aria-label="Import a backup"><span>⇧</span></button>
+      <input id="importFile" type="file" accept="application/json,.json" hidden>
+      <div class="rail-avatar" title="Your little writing nook">B</div>
+    </aside>
+
+    <aside class="projects-pane" id="projectsPane">
+      <div class="pane-heading">
+        <div>
+          <p class="eyebrow">YOUR LITTLE CORNER</p>
+          <h1>My library<span class="heading-heart"> ✿</span></h1>
+        </div>
+        <button class="icon-button mobile-only" id="mobileNewProject" aria-label="Create a project">＋</button>
+      </div>
+      <label class="search-box">
+        <span class="search-icon">⌕</span>
+        <input id="searchInput" type="search" placeholder="Find a project or chapter…" autocomplete="off">
+        <kbd>/</kbd>
+      </label>
+      <div class="list-caption"><span id="projectCount">0 PROJECTS</span><button class="text-button" id="sortButton" title="Change sort order">Recently edited ↕</button></div>
+      <div class="project-list" id="projectList" aria-live="polite"></div>
+      <button class="new-project-button" id="newProjectButton"><span>＋</span> New project</button>
+      <div class="pane-footnote"><span class="tiny-leaf">✿</span> Your words stay on this device.</div>
+    </aside>
+
+    <main class="workspace" id="workspace">
+      <section class="welcome-screen" id="welcomeScreen">
+        <div class="welcome-art" aria-hidden="true">
+          <div class="sun-shape"></div><div class="book-shape"><span>✿</span></div><div class="spark spark-one">✧</div><div class="spark spark-two">✦</div>
+        </div>
+        <p class="eyebrow">A SOFT PLACE FOR YOUR WORDS</p>
+        <h2>Every little thought<br>deserves a home.</h2>
+        <p class="welcome-copy">Keep your stories, chapters, plans and everyday thoughts together in one lovely place.</p>
+        <button class="primary-button" id="welcomeCreate">＋ Create your first project</button>
+        <p class="welcome-note">Made for daydreamers, storytellers and note-collectors. <span>♡</span></p>
+      </section>
+      <section class="project-workspace hidden" id="projectWorkspace"></section>
+    </main>
+  </div>
+
+  <dialog class="modal" id="projectDialog">
+    <form method="dialog" id="projectForm" class="modal-card">
+      <button class="modal-close" value="cancel" aria-label="Close">×</button>
+      <p class="eyebrow">A FRESH LITTLE BEGINNING</p>
+      <h2 id="projectDialogTitle">Create a project</h2>
+      <label class="field-label" for="projectTitle">Project title</label>
+      <input class="modal-input" id="projectTitle" maxlength="70" placeholder="e.g. Sunlit Love" required>
+      <label class="field-label" for="projectDescription">A little description <span>(optional)</span></label>
+      <textarea class="modal-input modal-textarea" id="projectDescription" maxlength="180" placeholder="What is this project about?"></textarea>
+      <span class="field-label">Choose a cover</span>
+      <div class="cover-choices" id="coverChoices">
+        <button type="button" class="cover-choice selected" data-cover="rose" aria-label="Rose cover"></button>
+        <button type="button" class="cover-choice" data-cover="lavender" aria-label="Lavender cover"></button>
+        <button type="button" class="cover-choice" data-cover="sage" aria-label="Sage cover"></button>
+        <button type="button" class="cover-choice" data-cover="butter" aria-label="Butter cover"></button>
+        <button type="button" class="cover-choice" data-cover="sky" aria-label="Sky cover"></button>
+        <button type="button" class="cover-choice" data-cover="berry" aria-label="Berry cover"></button>
+      </div>
+      <div class="modal-actions"><button class="secondary-button" value="cancel">Cancel</button><button class="primary-button" id="saveProjectButton" value="default">Create project</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="chapterDialog">
+    <form method="dialog" id="chapterForm" class="modal-card">
+      <button class="modal-close" value="cancel" aria-label="Close">×</button>
+      <p class="eyebrow">ONE PAGE AT A TIME</p>
+      <h2 id="chapterDialogTitle">Add a chapter</h2>
+      <label class="field-label" for="chapterTitle">Chapter title</label>
+      <input class="modal-input" id="chapterTitle" maxlength="90" placeholder="e.g. Chapter One" required>
+      <div class="modal-actions"><button class="secondary-button" value="cancel">Cancel</button><button class="primary-button" id="saveChapterButton" value="default">Add chapter</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="confirmDialog">
+    <form method="dialog" class="modal-card compact-modal">
+      <button class="modal-close" value="cancel" aria-label="Close">×</button>
+      <p class="eyebrow">JUST CHECKING</p>
+      <h2 id="confirmTitle">Delete this?</h2>
+      <p class="confirm-copy" id="confirmCopy">This cannot be undone.</p>
+      <div class="modal-actions"><button class="secondary-button" value="cancel">Keep it</button><button class="danger-button" id="confirmDeleteButton" value="default">Delete</button></div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  'use strict';
+
+  const STORAGE_KEY = 'baby-tomatos-diary-v1';
+  const covers = ['rose', 'lavender', 'sage', 'butter', 'sky', 'berry'];
+  const coverSymbols = { rose: '✿', lavender: '✧', sage: '❀', butter: '☼', sky: '✦', berry: '♡' };
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+  const escapeHTML = (value = '') => String(value).replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[ch]));
+  const makeId = () => (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`);
+  const now = () => new Date().toISOString();
+
+  let state = { projects: [], activeProjectId: null, activeChapterId: null, filter: 'all', query: '', sortNewest: true, selectedCover: 'rose' };
+  let editingProjectId = null;
+  let pendingDelete = null;
+  let saveTimer = null;
+  let toastTimer = null;
+
+  const load = () => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const saved = JSON.parse(raw);
+      if (saved && Array.isArray(saved.projects)) state.projects = saved.projects.map(normaliseProject);
+    } catch (error) {
+      console.warn('Could not load the diary data:', error);
+      showToast('I could not read the saved diary data.');
+    }
+  };
+  const normaliseProject = p => ({
+    id: String(p.id || makeId()), title: String(p.title || 'Untitled project'), description: String(p.description || ''),
+    cover: covers.includes(p.cover) ? p.cover : 'rose', favourite: Boolean(p.favourite), createdAt: p.createdAt || now(), updatedAt: p.updatedAt || now(),
+    chapters: Array.isArray(p.chapters) ? p.chapters.map((c, i) => ({ id: String(c.id || makeId()), title: String(c.title || `Chapter ${i + 1}`), body: String(c.body || ''), favourite: Boolean(c.favourite), updatedAt: c.updatedAt || now() })) : []
+  });
+  const persist = () => {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ projects: state.projects })); }
+    catch (error) { console.error(error); showToast('Storage is full. Export a backup before adding more.'); }
+  };
+  const schedulePersist = () => {
+    clearTimeout(saveTimer);
+    $('#saveStatus').textContent = 'Saving…';
+    saveTimer = setTimeout(() => { persist(); const status = $('#saveStatus'); if (status) status.textContent = 'Saved on this device'; }, 280);
+  };
+  const showToast = message => {
+    const el = $('#toast'); el.textContent = message; el.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('show'), 2300);
+  };
+  const activeProject = () => state.projects.find(p => p.id === state.activeProjectId) || null;
+  const activeChapter = () => { const p = activeProject(); return p?.chapters.find(c => c.id === state.activeChapterId) || null; };
+  const wordCount = text => (text.trim().match(/\S+/g) || []).length;
+  const shortDate = value => { try { return new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric' }).format(new Date(value)); } catch { return ''; } };
+  const projectWords = p => p.chapters.reduce((sum, c) => sum + wordCount(c.body), 0);
+  const matchingProjects = () => {
+    const q = state.query.trim().toLowerCase();
+    return state.projects.filter(p => (state.filter !== 'favorites' || p.favourite) && (!q || p.title.toLowerCase().includes(q) || p.description.toLowerCase().includes(q) || p.chapters.some(c => c.title.toLowerCase().includes(q) || c.body.toLowerCase().includes(q))));
+  };
+
+  function renderProjects() {
+    const list = $('#projectList');
+    const projects = matchingProjects().sort((a, b) => state.sortNewest ? new Date(b.updatedAt) - new Date(a.updatedAt) : a.title.localeCompare(b.title));
+    $('#projectCount').textContent = `${projects.length} ${projects.length === 1 ? 'PROJECT' : 'PROJECTS'}`;
+    if (!projects.length) {
+      list.innerHTML = `<div class="empty-projects"><strong>${state.query ? 'Nothing found just yet' : state.filter === 'favorites' ? 'No favourites yet' : 'Your library is waiting'}</strong>${state.query ? 'Try a different title or keyword.' : state.filter === 'favorites' ? 'Tap the little heart on a project to keep it here.' : 'Create a project and give your ideas a home.'}</div>`;
+      return;
+    }
+    list.innerHTML = projects.map(p => `
+      <div class="project-card ${p.id === state.activeProjectId ? 'selected' : ''}" data-project="${escapeHTML(p.id)}" role="button" tabindex="0" aria-label="Open ${escapeHTML(p.title)}">
+        <div class="cover-mini cover-${p.cover}">${coverSymbols[p.cover]}</div>
+        <div class="project-card-copy"><p class="project-card-title">${escapeHTML(p.title)}</p><p class="project-card-meta">${p.chapters.length} ${p.chapters.length === 1 ? 'chapter' : 'chapters'} · ${shortDate(p.updatedAt)}</p></div>
+        ${p.favourite ? '<span class="project-card-star" aria-label="Favourite">♥</span>' : ''}
+      </div>`).join('');
+    $$('.project-card', list).forEach(card => {
+      const open = () => openProject(card.dataset.project);
+      card.addEventListener('click', open);
+      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    });
+  }
+
+  function renderWorkspace() {
+    const shell = $('#appShell');
+    const project = activeProject();
+    const welcome = $('#welcomeScreen');
+    const workspace = $('#projectWorkspace');
+    if (!project) {
+      shell.classList.remove('has-project');
+      welcome.classList.remove('hidden'); workspace.classList.add('hidden');
+      return;
+    }
+    shell.classList.add('has-project');
+    welcome.classList.add('hidden'); workspace.classList.remove('hidden');
+    const chapter = activeChapter();
+    workspace.className = `project-workspace ${chapter ? 'mobile-editor' : 'mobile-chapters'}`;
+    const chapterItems = project.chapters.map((c, i) => `
+      <div class="chapter-item ${c.id === state.activeChapterId ? 'active' : ''}" data-chapter="${escapeHTML(c.id)}" role="button" tabindex="0" aria-label="Open ${escapeHTML(c.title)}">
+        <span class="chapter-number">${String(i + 1).padStart(2,'0')}</span><span class="chapter-item-title">${escapeHTML(c.title)}</span><span class="chapter-item-count">${wordCount(c.body)}w</span>
+      </div>`).join('');
+    const chapterPane = `
+      <aside class="chapter-pane">
+        <div class="project-topline"><button class="back-link" id="backToProjects">← Library</button><span class="crumb-dot">/</span><span class="eyebrow" style="margin:0">PROJECT</span></div>
+        <div class="project-cover-large cover-${project.cover}"><h2>${escapeHTML(project.title)}</h2></div>
+        ${project.description ? `<p class="project-description">${escapeHTML(project.description)}</p>` : ''}
+        <div class="chapter-heading"><h3>CHAPTERS · ${project.chapters.length}</h3><button class="small-plus" id="addChapter" aria-label="Add chapter">＋</button></div>
+        <div class="chapter-list">${chapterItems || '<div class="chapter-empty">Your first chapter is just a little<br>＋ away. Start whenever you are ready.</div>'}</div>
+        <div class="project-actions"><button id="editProject">Edit project</button><button id="toggleProjectFavourite">${project.favourite ? '♥ Favourited' : '♡ Favourite'}</button><button id="deleteProject">Delete</button></div>
+        <div class="chapter-pane-foot">${project.chapters.length} chapters · ${projectWords(project)} words in this project</div>
+      </aside>`;
+    const editorPane = chapter ? `
+      <section class="writing-pane">
+        <div class="editor-toolbar">
+          <button class="mobile-back" id="backToChapters">← Chapters</button>
+          <div class="editor-breadcrumb">${escapeHTML(project.title)} <span>/</span> ${escapeHTML(chapter.title)}</div>
+          <div class="toolbar-actions">
+            <button class="icon-button ${chapter.favourite ? 'is-favourite' : ''}" id="toggleChapterFavourite" title="Favourite chapter" aria-label="Favourite chapter">${chapter.favourite ? '♥' : '♡'}</button>
+            <div class="more-menu"><button class="icon-button" id="chapterMenuButton" aria-label="Chapter options">···</button><div class="menu-popover" id="chapterMenu"><button id="renameChapter">Rename chapter</button><button id="deleteChapter">Delete chapter</button></div></div>
+          </div>
+        </div>
+        <div class="editor-paper">
+          <div class="chapter-kicker">A PAGE FROM YOUR STORY</div>
+          <input class="chapter-title-input" id="chapterTitleEditor" maxlength="90" value="${escapeHTML(chapter.title)}" aria-label="Chapter title" placeholder="Give this chapter a title…">
+          <div class="editor-divider"></div>
+          <textarea class="chapter-body" id="chapterBody" spellcheck="true" placeholder="Let your thoughts find their way onto the page…">${escapeHTML(chapter.body)}</textarea>
+          <div class="editor-footer"><span id="wordCount">${wordCount(chapter.body)} words</span><span class="save-status"><i class="save-dot"></i><span id="saveStatus">Saved on this device</span></span></div>
+        </div>
+      </section>` : `
+      <section class="writing-pane chapter-placeholder">
+        <div class="editor-toolbar"><div class="editor-breadcrumb">${escapeHTML(project.title)}</div><div class="toolbar-actions"><button class="icon-button" id="addChapterTop" title="Add chapter">＋</button></div></div>
+        <div class="welcome-screen"><div class="welcome-art" aria-hidden="true"><div class="sun-shape"></div><div class="book-shape"><span>✧</span></div><div class="spark spark-one">✿</div><div class="spark spark-two">✦</div></div><p class="eyebrow">YOUR STORY, YOUR PACE</p><h2>${project.chapters.length ? 'Choose a chapter<br>to keep writing.' : 'A brand new page.'}</h2><p class="welcome-copy">${project.chapters.length ? 'Pick a chapter from the list, or create another one.' : 'Give your first chapter a name. It does not have to be perfect; it only has to begin.'}</p><button class="primary-button" id="addChapterWelcome">＋ Add a chapter</button></div>
+      </section>`;
+    workspace.innerHTML = chapterPane + editorPane;
+    $('#backToProjects')?.addEventListener('click', () => { state.activeProjectId = null; state.activeChapterId = null; renderAll(); });
+    $('#addChapter')?.addEventListener('click', openChapterDialog);
+    $('#addChapterTop')?.addEventListener('click', openChapterDialog);
+    $('#addChapterWelcome')?.addEventListener('click', openChapterDialog);
+    $('#editProject')?.addEventListener('click', () => openProjectDialog(project));
+    $('#toggleProjectFavourite')?.addEventListener('click', () => { project.favourite = !project.favourite; project.updatedAt = now(); persist(); renderAll(); showToast(project.favourite ? 'Added to your favourites ♥' : 'Removed from favourites'); });
+    $('#deleteProject')?.addEventListener('click', () => askDelete('project', project.id));
+    $$('.chapter-item', workspace).forEach(item => {
+      const open = () => { state.activeChapterId = item.dataset.chapter; renderWorkspace(); renderProjects(); };
+      item.addEventListener('click', open);
+      item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    });
+    if (chapter) bindEditor(project, chapter);
+  }
+
+  function bindEditor(project, chapter) {
+    $('#backToChapters')?.addEventListener('click', () => { state.activeChapterId = null; renderWorkspace(); renderProjects(); });
+    const title = $('#chapterTitleEditor');
+    const body = $('#chapterBody');
+    const count = $('#wordCount');
+    const saveStatus = $('#saveStatus');
+    const updateChapter = () => {
+      chapter.title = title.value.trim() || 'Untitled chapter';
+      chapter.body = body.value;
+      chapter.updatedAt = now(); project.updatedAt = now();
+      count.textContent = `${wordCount(body.value)} words`;
+      const crumb = $('.editor-breadcrumb'); if (crumb) crumb.innerHTML = `${escapeHTML(project.title)} <span>/</span> ${escapeHTML(chapter.title)}`;
+      renderProjects();
+      // Keep the selected title in the chapter list up to date without disturbing the editor.
+      const item = $(`.chapter-item[data-chapter="${CSS.escape(chapter.id)}"]`);
+      if (item) { $('.chapter-item-title', item).textContent = chapter.title; $('.chapter-item-count', item).textContent = `${wordCount(body.value)}w`; }
+      schedulePersist();
+    };
+    title.addEventListener('input', updateChapter);
+    body.addEventListener('input', updateChapter);
+    $('#toggleChapterFavourite')?.addEventListener('click', () => { chapter.favourite = !chapter.favourite; persist(); const btn = $('#toggleChapterFavourite'); btn.textContent = chapter.favourite ? '♥' : '♡'; btn.classList.toggle('is-favourite', chapter.favourite); showToast(chapter.favourite ? 'Chapter saved to favourites ♥' : 'Chapter unfavourited'); });
+    $('#chapterMenuButton')?.addEventListener('click', () => $('#chapterMenu').classList.toggle('open'));
+    $('#renameChapter')?.addEventListener('click', () => { $('#chapterMenu').classList.remove('open'); title.focus(); title.select(); showToast('Edit the chapter title at the top of the page.'); });
+    $('#deleteChapter')?.addEventListener('click', () => { $('#chapterMenu').classList.remove('open'); askDelete('chapter', chapter.id); });
+  }
+
+  function renderAll() { renderProjects(); renderWorkspace(); }
+  function openProject(id) { state.activeProjectId = id; state.activeChapterId = null; renderAll(); }
+
+  function openProjectDialog(project = null) {
+    editingProjectId = project?.id || null;
+    state.selectedCover = project?.cover || 'rose';
+    $('#projectDialogTitle').textContent = project ? 'Edit your project' : 'Create a project';
+    $('#saveProjectButton').textContent = project ? 'Save changes' : 'Create project';
+    $('#projectTitle').value = project?.title || '';
+    $('#projectDescription').value = project?.description || '';
+    $$('.cover-choice').forEach(b => b.classList.toggle('selected', b.dataset.cover === state.selectedCover));
+    $('#projectDialog').showModal();
+    setTimeout(() => $('#projectTitle').focus(), 50);
+  }
+  function saveProject(event) {
+    event.preventDefault();
+    const title = $('#projectTitle').value.trim();
+    if (!title) { $('#projectTitle').focus(); return; }
+    if (editingProjectId) {
+      const p = state.projects.find(x => x.id === editingProjectId);
+      if (p) { p.title = title; p.description = $('#projectDescription').value.trim(); p.cover = state.selectedCover; p.updatedAt = now(); }
+      showToast('Project details updated ✿');
+    } else {
+      const project = { id: makeId(), title, description: $('#projectDescription').value.trim(), cover: state.selectedCover, favourite: false, createdAt: now(), updatedAt: now(), chapters: [] };
+      state.projects.unshift(project); state.activeProjectId = project.id; state.activeChapterId = null;
+      showToast('Your new project is ready ✿');
+    }
+    persist(); $('#projectDialog').close(); renderAll();
+  }
+  function openChapterDialog() {
+    $('#chapterTitle').value = `Chapter ${((activeProject()?.chapters.length || 0) + 1)}`;
+    $('#chapterDialog').showModal(); setTimeout(() => { $('#chapterTitle').focus(); $('#chapterTitle').select(); }, 50);
+  }
+  function saveChapter(event) {
+    event.preventDefault();
+    const p = activeProject(); const title = $('#chapterTitle').value.trim();
+    if (!p || !title) return;
+    const chapter = { id: makeId(), title, body: '', favourite: false, updatedAt: now() };
+    p.chapters.push(chapter); p.updatedAt = now(); state.activeChapterId = chapter.id;
+    persist(); $('#chapterDialog').close(); renderAll(); showToast('A fresh page, just for you.');
+  }
+  function askDelete(type, id) {
+    pendingDelete = { type, id };
+    const isProject = type === 'project';
+    const thing = isProject ? state.projects.find(p => p.id === id)?.title : activeProject()?.chapters.find(c => c.id === id)?.title;
+    $('#confirmTitle').textContent = `Delete ${isProject ? 'this project' : 'this chapter'}?`;
+    $('#confirmCopy').textContent = isProject ? `“${thing || 'Untitled project'}” and all its chapters will be removed from this device. Export a backup first if you want to keep a copy.` : `“${thing || 'Untitled chapter'}” will be removed from this project.`;
+    $('#confirmDialog').showModal();
+  }
+  function confirmDelete(event) {
+    event.preventDefault(); if (!pendingDelete) return;
+    if (pendingDelete.type === 'project') {
+      state.projects = state.projects.filter(p => p.id !== pendingDelete.id);
+      state.activeProjectId = null; state.activeChapterId = null; showToast('Project deleted.');
+    } else {
+      const p = activeProject(); if (p) p.chapters = p.chapters.filter(c => c.id !== pendingDelete.id);
+      state.activeChapterId = null; if (p) p.updatedAt = now(); showToast('Chapter deleted.');
+    }
+    pendingDelete = null; persist(); $('#confirmDialog').close(); renderAll();
+  }
+
+  function exportBackup() {
+    const payload = { app: "Baby Tomato's Diary", version: 1, exportedAt: now(), projects: state.projects };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = `baby-tomatos-diary-backup-${new Date().toISOString().slice(0,10)}.json`; a.click(); URL.revokeObjectURL(url);
+    showToast('Your diary backup has been exported.');
+  }
+  function importBackup(file) {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result);
+        if (!data || !Array.isArray(data.projects)) throw new Error('This file does not look like a diary backup.');
+        const imported = data.projects.map(normaliseProject);
+        const replace = confirm(`Import ${imported.length} project(s)? Choose OK to replace the diary currently on this device, or Cancel to merge them.`);
+        if (replace) state.projects = imported;
+        else {
+          const ids = new Set(state.projects.map(p => p.id));
+          imported.forEach(p => { if (ids.has(p.id)) p.id = makeId(); state.projects.push(p); });
+        }
+        state.activeProjectId = null; state.activeChapterId = null; persist(); renderAll(); showToast('Diary backup imported successfully.');
+      } catch (error) { alert(error.message || 'Could not import that file.'); }
+      $('#importFile').value = '';
+    };
+    reader.onerror = () => { alert('I could not read that file.'); $('#importFile').value = ''; };
+    reader.readAsText(file);
+  }
+
+  // App events
+  $('#newProjectButton').addEventListener('click', () => openProjectDialog());
+  $('#mobileNewProject').addEventListener('click', () => openProjectDialog());
+  $('#welcomeCreate').addEventListener('click', () => openProjectDialog());
+  $('#projectForm').addEventListener('submit', saveProject);
+  $('#chapterForm').addEventListener('submit', saveChapter);
+  $('#confirmDeleteButton').addEventListener('click', confirmDelete);
+  $('#coverChoices').addEventListener('click', e => { const b = e.target.closest('.cover-choice'); if (!b) return; state.selectedCover = b.dataset.cover; $$('.cover-choice').forEach(x => x.classList.toggle('selected', x === b)); });
+  $('#searchInput').addEventListener('input', e => { state.query = e.target.value; renderProjects(); });
+  $('#sortButton').addEventListener('click', () => { state.sortNewest = !state.sortNewest; $('#sortButton').textContent = state.sortNewest ? 'Recently edited ↕' : 'Name A–Z ↕'; renderProjects(); });
+  $$('.rail-button[data-filter]').forEach(btn => btn.addEventListener('click', () => {
+    state.filter = btn.dataset.filter; $$('.rail-button[data-filter]').forEach(b => b.classList.toggle('active', b === btn));
+    if (state.filter === 'favorites' && activeProject() && !activeProject().favourite) { state.activeProjectId = null; state.activeChapterId = null; }
+    renderAll();
+    if (window.innerWidth <= 720) { $('#appShell').classList.remove('has-project'); }
+  }));
+  $('#exportButton').addEventListener('click', exportBackup);
+  $('#importButton').addEventListener('click', () => $('#importFile').click());
+  $('#importFile').addEventListener('change', e => importBackup(e.target.files?.[0]));
+  document.addEventListener('keydown', e => {
+    if (e.key === '/' && !['INPUT','TEXTAREA'].includes(document.activeElement.tagName) && !e.ctrlKey && !e.metaKey) { e.preventDefault(); $('#searchInput').focus(); }
+    if (e.key === 'Escape') $$('.menu-popover.open').forEach(m => m.classList.remove('open'));
+  });
+  document.addEventListener('click', e => { if (!e.target.closest('.more-menu')) $$('.menu-popover.open').forEach(m => m.classList.remove('open')); });
+  window.addEventListener('beforeunload', () => { clearTimeout(saveTimer); persist(); });
+
+  load(); renderAll();
+  if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(err => console.warn('Offline support could not be enabled:', err)));
+  }
+})();
+
+</script>
+</body>
+</html>
